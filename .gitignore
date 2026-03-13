@@ -95,9 +95,15 @@ ENV/
 env.bak/
 venv.bak/
 
+# Vector Database
+chromadb/
+
 # Spyder project settings
 .spyderproject
 .spyproject
+
+# Temporary documentation and files
+tmp/
 
 # Rope project settings
 .ropeproject
