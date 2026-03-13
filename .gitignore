@@ -72,6 +72,9 @@ target/
 
 # Jupyter Notebook
 .ipynb_checkpoints
+# Note: nbstripout is configured to clean notebooks on commit
+# Uncomment below if you prefer to ignore notebooks entirely:
+# *.ipynb
 
 # IPython
 profile_default/
