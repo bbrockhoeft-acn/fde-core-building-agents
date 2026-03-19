@@ -1,6 +1,26 @@
 # Project Summary
 The source in this project corresponds to Full Stack FDE - Core training course focused on *Building Agents*. All module exercises are copyrighted by Udacity subject to its license. Trainee project is for learning verification purposes.
 
+## UdaPlay — Project Overview
+UdaPlay is an AI-powered research agent for the video game industry, built as the capstone project for Course 3 (Building Agents). The project is split into two parts:
+
+### Part 1 · Offline RAG
+Build a vector database using ChromaDB to store and retrieve video game information. Each game document contains Name, Platform, Genre, Publisher, Description, and Year of Release.
+
+### Part 2 · AI Agent
+Build an intelligent agent that combines local knowledge with web search. Capabilities:
+1. Answer questions using internal knowledge (RAG)
+2. Fall back to web search when needed
+3. Maintain conversation state
+4. Return structured outputs
+
+**Agent Tools:**
+- `retrieve_game` — Searches the local ChromaDB vector database
+- `evaluate_retrieval` — Scores the usefulness of retrieved documents
+- `game_web_search` — Web search fallback via Tavily
+
+See [`project/starter/README.md`](project/starter/README.md) for full project specifications and rubric details.
+
 # Setup
 ## Local Windows workstation setup steps:
 - Install VS Code
