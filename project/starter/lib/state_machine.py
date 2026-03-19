@@ -170,10 +170,11 @@ class Run(Generic[StateSchema]):
 
 
 class StateMachine(Generic[StateSchema]):
-    def __init__(self, state_schema: Type[StateSchema]):
+    def __init__(self, state_schema: Type[StateSchema], debug: bool = False):
         self.state_schema = state_schema
         self.steps: Dict[str, Step[StateSchema]] = {}
         self.transitions: Dict[str, List[Transition[StateSchema]]] = {}
+        self.debug = debug
 
     def __str__(self) -> str:
         schema_keys = list(get_type_hints(self.state_schema).keys())
@@ -224,16 +225,19 @@ class StateMachine(Generic[StateSchema]):
         while current_step_id:
             step = self.steps[current_step_id]
             if isinstance(step, Termination):
-                print(f"[StateMachine] Terminating: {current_step_id}")
+                if self.debug:
+                    print(f"[StateMachine] Terminating: {current_step_id}")
                 break
             
             # Replace state entirely
             state = step.run(state, self.state_schema, resource)  
 
             if isinstance(step, EntryPoint):
-                print(f"[StateMachine] Starting: {current_step_id}")
+                if self.debug:
+                    print(f"[StateMachine] Starting: {current_step_id}")
             else:
-                print(f"[StateMachine] Executing step: {current_step_id}")
+                if self.debug:
+                    print(f"[StateMachine] Executing step: {current_step_id}")
 
             # Create and add snapshot to the current run
             snapshot = Snapshot.create(copy.deepcopy(state), self.state_schema, current_step_id)
