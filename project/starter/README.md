@@ -90,8 +90,10 @@ After completing the basic implementation, consider extending the agent with:
 - [Pydantic](https://docs.pydantic.dev/) — Data validation for tool outputs
 
 ## Notes
-- Use **solution notebooks** for grading/clean submission; use **starter notebooks** for development
-- Notebooks are configured with `nbstripout` to strip outputs/metadata on commit
+- Use **solution notebooks** for grading/submission; use **starter notebooks** for development
+- `nbstripout` is configured in `.gitattributes` to strip outputs only from `*starter*.ipynb` files.
+  Solution notebooks preserve outputs so reviewers can see successful run results.
+  Developers who want clean diffs on starter notebooks can run `nbstripout --install` locally.
 - Vector database files are gitignored — regenerate by running Part 1
 - Never hardcode API keys directly in notebook cells before uploading for submission
 

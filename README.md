@@ -46,7 +46,7 @@ The following changes & steps were made for local development of the module exer
     - `pip install tavily-python` (for web search API)
 - Installed development tools:
     - `pip install nbstripout` (for cleaning Jupyter notebook metadata)
-    - `nbstripout --install` (configure git filters for clean notebook commits)
+    - `nbstripout --install` (configure git filters for clean notebook commits — optional, see Development Notes)
 
 ## API Configuration
 - Create `.env` file in `project/starter/` with API keys:
@@ -74,7 +74,14 @@ The following changes & steps were made for local development of the module exer
 ```
 
 ## Development Notes
-- Notebooks are configured with nbstripout to strip metadata/outputs on commit
+- **nbstripout** is configured via `.gitattributes` to strip outputs only from `*starter*.ipynb` files.
+  Solution notebooks (`*solution*.ipynb`) intentionally preserve cell outputs so reviewers can verify successful runs.
+- To enable output stripping during active development (reduces diff noise in starter notebooks):
+  ```
+  nbstripout --install
+  git config filter.nbstripout.required false
+  ```
+- To disable stripping entirely: `nbstripout --uninstall`
 - Vector database files are gitignored (regenerate from source data)
-- Use solution notebooks for grading/clean demos, starter notebooks for development
+- Use solution notebooks for grading/submission; use starter notebooks for development
 

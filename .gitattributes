@@ -1,0 +1,16 @@
+# Jupyter notebook output handling
+# nbstripout filter is applied ONLY to starter/development notebooks.
+# Solution notebooks intentionally preserve outputs so reviewers can verify successful runs.
+#
+# To enable output stripping during development (keep commits clean):
+#   nbstripout --install
+#   git config filter.nbstripout.required false
+#
+# To disable output stripping entirely (default behavior for fresh clones):
+#   nbstripout --uninstall
+
+# Starter notebooks: strip outputs and metadata on commit (clean diffs)
+*starter*.ipynb filter=nbstripout diff=ipynb
+
+# Solution notebooks: preserve outputs for submission/code review
+*solution*.ipynb diff=ipynb
